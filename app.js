@@ -27,14 +27,13 @@ const snake = {
     ],
     //create place where snake will move
     createGrid: (drawGrid) => {
-        let pixel = '';
         for (let i = 0; i < drawGrid ** 2; i++) {
             snake.variablePlace.pixel = document.createElement('div');
             snake.variablePlace.pixel.classList.toggle('pixel');
             snake.variablePlace.drawboard.appendChild(snake.variablePlace.pixel);
         }
-        snake.variablePlace.drawboard.style.gridTemplateColumns = `repeat(${drawGrid}, auto)`;
-        snake.variablePlace.drawboard.style.gridTemplateRows = `repeat(${drawGrid}, auto)`;
+        snake.variablePlace.drawboard.style.gridTemplateColumns = `repeat(${drawGrid}, 1fr)`;
+        snake.variablePlace.drawboard.style.gridTemplateRows = `repeat(${drawGrid}, 1fr)`;
     },
     //create a snake part
     drawSnakePart: (snkPart) => {
@@ -45,7 +44,7 @@ const snake = {
     },
     game: () => {
         console.log("Game was called")
-        snake.createGrid(50);
+        snake.createGrid(21);
     }
 }
 
