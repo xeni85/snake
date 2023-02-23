@@ -4,28 +4,8 @@ const snake = {
         drawboard: document.querySelector(".can-vas"),
     },
     //snake array
-    snakeArr: [{
-            x: 200,
-            y: 200
-        },
-        {
-            x: 190,
-            y: 200
-        },
-        {
-            x: 180,
-            y: 200
-        },
-        {
-            x: 170,
-            y: 200
-        },
-        {
-            x: 160,
-            y: 200
-        },
-    ],
-    //create place where snake will move
+
+    //create grid where snake will move
     createGrid: (drawGrid) => {
         for (let i = 0; i < drawGrid ** 2; i++) {
             snake.variablePlace.pixel = document.createElement('div');
@@ -43,8 +23,11 @@ const snake = {
 
     },
     game: () => {
-        console.log("Game was called")
-        snake.createGrid(21);
+        setInterval(() => {
+            console.log("render");
+            // console.log("Game was called")
+            // snake.createGrid(21);
+        }, 100);
     }
 }
 
