@@ -5,51 +5,64 @@ const snake = {
         snakeSpeed: 500,
         gridSize: 21,
     },
-    //begining snake array
+    // snake array
     snakeArr: [
         {
-            x: Math.floor(snake.variablePlace.gridSize/2), 
-            y: Math.floor(snake.variablePlace.gridSize/2),
+            x: 11,
+            y: 11,
+            // x: Math.floor(snake.variablePlace.gridSize/2), 
+            // y: Math.floor(snake.variablePlace.gridSize/2),
         }, 
         {
-            x: Math.floor(snake.variablePlace.gridSize/2) - 1, 
-            y: Math.floor(snake.variablePlace.gridSize/2),
+            x: 11,
+            y: 10,
+            // x: Math.floor(snake.variablePlace.gridSize/2) - 1, 
+            // y: Math.floor(snake.variablePlace.gridSize/2),
         }, 
         {
-            x: Math.floor(snake.variablePlace.gridSize/2) - 2, 
-            y: Math.floor(snake.variablePlace.gridSize/2),
+            x: 11,
+            y: 9,
+            // x: Math.floor(snake.variablePlace.gridSize/2) - 2, 
+            // y: Math.floor(snake.variablePlace.gridSize/2),
         }, 
         {
-            x: Math.floor(snake.variablePlace.gridSize/2) - 3, 
-            y: Math.floor(snake.variablePlace.gridSize/2),
+            x: 11,
+            y: 8,
+            // x: Math.floor(snake.variablePlace.gridSize/2) - 3, 
+            // y: Math.floor(snake.variablePlace.gridSize/2),
         }, 
     ],
     //create grid where snake will move
     createGrid: (drawGrid) => {
         
-        for (let i = 0; i < drawGrid ** 2; i++) {
-            snake.variablePlace.pixel = document.createElement('div');
-            snake.variablePlace.pixel.classList.toggle('pixel');
-            snake.variablePlace.drawboard.appendChild(snake.variablePlace.pixel);
-        }
+        // for (let i = 0; i < drawGrid ** 2; i++) {
+        //     snake.variablePlace.pixel = document.createElement('div');
+        //     snake.variablePlace.pixel.classList.toggle('pixel');
+        //     snake.variablePlace.drawboard.appendChild(snake.variablePlace.pixel);
+        // }
         snake.variablePlace.drawboard.style.gridTemplateColumns = `repeat(${drawGrid}, 1fr)`;
         snake.variablePlace.drawboard.style.gridTemplateRows = `repeat(${drawGrid}, 1fr)`;
     },
-    //create a snake part
-    drawSnakePart: (snkPart) => {
-        snkPart.style.backgroundColor ="blue";
+    //create a snake 
+    drawSnake: (arr) => {
+        snake.snakeArr.forEach(element => {
+            const snakePart = document.createElement('div');
+            snakePart.style.gridRowStart = element.x;
+            snakePart.style.gridColumnStart = element.y;
+            snakePart.classList.add("snake");
+            snake.variablePlace.drawboard.appendChild(snakePart);
+        });
     },
     updateFrames() {
 
     },
-    drawSnake: (arr) => {
 
-    },
     game: () => {
         setInterval(() => {
             console.log("render");
             // console.log("Game was called")
             // snake.createGrid(21);
+            snake.drawSnake(snake.drawboard)
         }, snake.variablePlace.snakeSpeed);
     }
 }
