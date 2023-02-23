@@ -2,11 +2,31 @@ const snake = {
     variablePlace: {
         pixel: "",
         drawboard: document.querySelector(".can-vas"),
+        snakeSpeed: 500,
+        gridSize: 21,
     },
-    //snake array
-
+    //begining snake array
+    snakeArr: [
+        {
+            x: Math.floor(snake.variablePlace.gridSize/2), 
+            y: Math.floor(snake.variablePlace.gridSize/2),
+        }, 
+        {
+            x: Math.floor(snake.variablePlace.gridSize/2) - 1, 
+            y: Math.floor(snake.variablePlace.gridSize/2),
+        }, 
+        {
+            x: Math.floor(snake.variablePlace.gridSize/2) - 2, 
+            y: Math.floor(snake.variablePlace.gridSize/2),
+        }, 
+        {
+            x: Math.floor(snake.variablePlace.gridSize/2) - 3, 
+            y: Math.floor(snake.variablePlace.gridSize/2),
+        }, 
+    ],
     //create grid where snake will move
     createGrid: (drawGrid) => {
+        
         for (let i = 0; i < drawGrid ** 2; i++) {
             snake.variablePlace.pixel = document.createElement('div');
             snake.variablePlace.pixel.classList.toggle('pixel');
@@ -19,6 +39,9 @@ const snake = {
     drawSnakePart: (snkPart) => {
         snkPart.style.backgroundColor ="blue";
     },
+    updateFrames() {
+
+    },
     drawSnake: (arr) => {
 
     },
@@ -27,14 +50,14 @@ const snake = {
             console.log("render");
             // console.log("Game was called")
             // snake.createGrid(21);
-        }, 100);
+        }, snake.variablePlace.snakeSpeed);
     }
 }
 
 
 //call main function
 snake.game();
-
+snake.createGrid(snake.variablePlace.gridSize);
 
 
 
