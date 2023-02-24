@@ -41,7 +41,7 @@ let snakeArr =
         x: Math.ceil(gridSize / 2),
         y: Math.ceil(gridSize / 2),
     }, ]
-
+let gameOver = false;
 
 //create grid where snake will move
 const createGrid = (drawGrid) => {
@@ -156,8 +156,9 @@ const eqPositions = (p1, p2) => {
 }
 
 
-const onSnake = (position) => {
-    return snakeArr.some(part => {
+const onSnake = (position, { ignoreHead = false } = {}) => {
+    return snakeArr.some((part, index) => {
+        if (ignoreHead && index === 0) return false
         return eqPositions(part, position)
     })
 }
@@ -190,7 +191,29 @@ const randomFoodLocation = () => {
     return newPosition
 }
 
+let food = randomFoodLocation()
 
+
+//game over - check grid borderline or implosion
+const borderHit = (position) => {
+    return (
+        position.x < 1 || position.x > gridSize ||
+        position.y < 1 || position.y > gridSize
+    )
+}
+
+const snakeHead = () => {
+    return snakeArr[0];
+}
+
+
+const snakeImpolosion = () => {
+    return onSnake(snakeArr[0], { ignoreHead: true })
+
+}
+const deaded = () => {
+    gameOver = borderHit(snakeHead()) || snakeImpolosion()
+}
 //update food location
 const updateFood = () => {
     if (onSnake(food)) {
@@ -199,15 +222,24 @@ const updateFood = () => {
     }
 }
 
-let food = randomFoodLocation()
+
 //game function
 const game = () => {
 
+
+
     setInterval(() => {
+        if(gameOver) {
+            if(confirm("You lost. Press ok to restart")) {
+                window.location = '/'
+            }
+            return
+        }
         // for (let i = 0; i < arrLength - 1; i++) {
         //     snakeArr.splice(arrLength - 2, 2);
 
         // }
+        deaded()
         drawboard.innerHTML = ''
         createGrid(gridSize);
         // console.log("Game was called")
