@@ -5,6 +5,15 @@ let snakeSpeed = 1000;
 let gridSize = 21;
 let arrLength;
 let counter = 0;
+let snakeDirection = {
+    x: 0,
+    y: 0
+}
+
+let previousDirection = {
+    x: 0,
+    y: 0
+}
 
 let snakeArr =
     // snake array
@@ -29,7 +38,7 @@ let snakeArr =
         // {
             // x: 11,
             // y: 11,
-            x: Math.floor(gridSize / 2),
+            x: Math.ceil(gridSize / 2),
             y: Math.ceil(gridSize / 2),
         },
     ]
@@ -56,25 +65,14 @@ const drawSnake = (arr) => {
         snakePart.style.gridColumnStart = element.y
         snakePart.classList.add("snake")
         arr.appendChild(snakePart)
-        console.log("This is the counter")
     });
 
 }
 
 
-let snakeDirection = {
-    x: 0,
-    y: 0
-}
 
-
-let previousDirection = {
-    x: 0,
-    y: 0
-}
-
+//update snake direction
 const moveSnake = () => {
-
     window.addEventListener('keydown', e => {
         console.log(e)
 
@@ -113,18 +111,15 @@ const moveSnake = () => {
                     y: 1
                 }
                 break;
-    
         }
     })
-
-    console.log("moveSnake has been called")
     previousDirection = snakeDirection
     return snakeDirection
 }
+
 //simulate motion
 const updateFrames = () => {
     let direction = moveSnake();
-    console.log(direction)
     const snakePart = document.createElement('div')
     snakePart.style.gridRowStart = snakeArr[counter].x
     snakePart.style.gridColumnStart = snakeArr[counter].y
@@ -146,7 +141,21 @@ const updateFrames = () => {
 }
 // console.log("this is the length" + arrLength)
 
+//create food
+let food = {x: 1, y: 1} 
 
+const drawFood = (arr) => {
+    const foodPart = document.createElement('div')
+    foodPart.style.gridRowStart = food.x
+    foodPart.style.gridColumnStart = food.y
+    foodPart.classList.add("food")
+    arr.appendChild(foodPart)
+}
+
+//update food location
+const updateFood = {
+
+}
 
 //game function
 const game = () => {
@@ -161,7 +170,9 @@ const game = () => {
         // console.log("Game was called")
         // snake.createGrid(21);
         drawSnake(drawboard)
+        drawFood(drawboard)
         updateFrames();
+        updateFood()
         // if (snakeArr.length >= 5) {
         //     snakeArr = snakeArr.splice(-1);
         // }

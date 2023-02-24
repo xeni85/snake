@@ -32,4 +32,5 @@ article {
 .food {
     background-color:hsl(50, 100%, 50%); 
     border: .20vmin solid hsl(311, 89%, 25%);
+    border-radius: 5px;
 }
