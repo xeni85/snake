@@ -1,7 +1,7 @@
 //variables
 
 let drawboard = document.querySelector(".can-vas");
-let snakeSpeed = 400;
+let snakeSpeed = 1000;
 let gridSize = 21;
 let arrLength;
 let counter = 0;
@@ -9,24 +9,24 @@ let counter = 0;
 let snakeArr =
     // snake array
     [{
-            // x: 11,
-            // y: 8,
-            x: Math.floor(gridSize / 2),
-            y: Math.ceil(gridSize / 2) - 3,
-        },
-        {
-            // x: 11,
-            // y: 9,
-            x: Math.floor(gridSize / 2),
-            y: Math.ceil(gridSize / 2) - 2,
-        },
-        {
-            // x: 11,
-            // y: 10,
-            x: Math.floor(gridSize / 2),
-            y: Math.ceil(gridSize / 2) - 1,
-        },
-        {
+        //     // x: 11,
+        //     // y: 8,
+        //     x: Math.floor(gridSize / 2),
+        //     y: Math.ceil(gridSize / 2) - 3,
+        // },
+        // {
+        //     // x: 11,
+        //     // y: 9,
+        //     x: Math.floor(gridSize / 2),
+        //     y: Math.ceil(gridSize / 2) - 2,
+        // },
+        // {
+        //     // x: 11,
+        //     // y: 10,
+        //     x: Math.floor(gridSize / 2),
+        //     y: Math.ceil(gridSize / 2) - 1,
+        // },
+        // {
             // x: 11,
             // y: 11,
             x: Math.floor(gridSize / 2),
@@ -61,26 +61,90 @@ const drawSnake = (arr) => {
 
 }
 
+
+let snakeDirection = {
+    x: 0,
+    y: 0
+}
+
+
+let previousDirection = {
+    x: 0,
+    y: 0
+}
+
+const moveSnake = () => {
+
+    window.addEventListener('keydown', e => {
+        console.log(e)
+
+        // if(e.key === 'ArrowUp' && previousDirection.y !== 0) {
+        //     console.log("Inside ArrowUp if Statement")
+        //     snakeDirection = {
+        //         x: 0,
+        //         y: -1
+        //     }
+        // }
+        switch (e.key) {
+            case 'ArrowUp':
+                console.log("clicked up")
+                if(previousDirection.x !== 0) break
+                snakeDirection.x = -1
+                snakeDirection.y = 0
+                break;
+            case 'ArrowDown':
+                if(previousDirection.x !== 0) break
+                snakeDirection = {
+                    x: 1,
+                    y: 0
+                }
+                break;
+            case 'ArrowLeft':
+                if(previousDirection.y !== 0) break
+                snakeDirection = {
+                    x: 0,
+                    y: -1
+                }
+                break;
+            case 'ArrowRight':
+                if(previousDirection.y !== 0) break
+                snakeDirection = {
+                    x: 0,
+                    y: 1
+                }
+                break;
+    
+        }
+    })
+
+    console.log("moveSnake has been called")
+    previousDirection = snakeDirection
+    return snakeDirection
+}
 //simulate motion
 const updateFrames = () => {
+    let direction = moveSnake();
+    console.log(direction)
     const snakePart = document.createElement('div')
     snakePart.style.gridRowStart = snakeArr[counter].x
     snakePart.style.gridColumnStart = snakeArr[counter].y
     snakePart.classList.add("snake")
     drawboard.appendChild(snakePart)
-    console.log("This is the counter")
     for (let i = snakeArr.length - 2; i >= 0; i--) {
-        snakeArr[i + 1] = { ...snakeArr[i] }
-      }
-    
-      snakeArr[0].x += 0
-      snakeArr[0].y += 1
-        // snakeArr.push({
-        //     ...snakeArr[0]
-        // });
-        // snakeArr.splice(0, 1);
+        snakeArr[i + 1] = {
+            ...snakeArr[i]
+        }
+    }
+
+    snakeArr[0].x += direction.x
+    snakeArr[0].y += direction.y
+
+    // snakeArr.push({
+    //     ...snakeArr[0]
+    // });
+    // snakeArr.splice(0, 1);
 }
-    // console.log("this is the length" + arrLength)
+// console.log("this is the length" + arrLength)
 
 
 
@@ -94,8 +158,6 @@ const game = () => {
         // }
         drawboard.innerHTML = ''
         createGrid(gridSize);
-        console.log(drawboard)
-        console.log("render");
         // console.log("Game was called")
         // snake.createGrid(21);
         drawSnake(drawboard)
