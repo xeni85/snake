@@ -13,10 +13,6 @@ let previousDirection = {
     x: 0,
     y: 0
 }
-let food = {
-    x: 1, 
-    y: 1
-} 
 const growth = 1;
 let newSnakePart = 0;
 let snakeArr =
@@ -40,12 +36,11 @@ let snakeArr =
         //     y: Math.ceil(gridSize / 2) - 1,
         // },
         // {
-            // x: 11,
-            // y: 11,
-            x: Math.ceil(gridSize / 2),
-            y: Math.ceil(gridSize / 2),
-        },
-    ]
+        // x: 11,
+        // y: 11,
+        x: Math.ceil(gridSize / 2),
+        y: Math.ceil(gridSize / 2),
+    }, ]
 
 
 //create grid where snake will move
@@ -90,26 +85,26 @@ const moveSnake = () => {
         switch (e.key) {
             case 'ArrowUp':
                 console.log("clicked up")
-                if(previousDirection.x !== 0) break
+                if (previousDirection.x !== 0) break
                 snakeDirection.x = -1
                 snakeDirection.y = 0
                 break;
             case 'ArrowDown':
-                if(previousDirection.x !== 0) break
+                if (previousDirection.x !== 0) break
                 snakeDirection = {
                     x: 1,
                     y: 0
                 }
                 break;
             case 'ArrowLeft':
-                if(previousDirection.y !== 0) break
+                if (previousDirection.y !== 0) break
                 snakeDirection = {
                     x: 0,
                     y: -1
                 }
                 break;
             case 'ArrowRight':
-                if(previousDirection.y !== 0) break
+                if (previousDirection.y !== 0) break
                 snakeDirection = {
                     x: 0,
                     y: 1
@@ -163,7 +158,7 @@ const eqPositions = (p1, p2) => {
 
 const onSnake = (position) => {
     return snakeArr.some(part => {
-        return eqPositions (part, position)
+        return eqPositions(part, position)
     })
 }
 //lengthen the snake
@@ -172,21 +167,39 @@ const growSnake = (element) => {
 }
 
 const addParts = () => {
-    for(let i = 0; i < newSnakePart; i++) {
-        snakeArr.push({ ...snakeArr[snakeArr.length - 1]})
+    for (let i = 0; i < newSnakePart; i++) {
+        snakeArr.push({
+            ...snakeArr[snakeArr.length - 1]
+        })
+    }
+    newSnakePart = 0
 }
-newSnakePart = 0
-}
-//update food location
-const updateFood = () => {
-    if(onSnake(food)) {
-        growSnake(growth)
-        food = {x: 20, y: 10}
+//create random food location
+const randomGridPosition = () => {
+    return {
+        x: Math.floor(Math.random() * gridSize) + 1,
+        y: Math.floor(Math.random() * gridSize) + 1
     }
 }
 
-//create random food location
+const randomFoodLocation = () => {
+    let newPosition
+    while(newPosition == null || onSnake(newPosition)) {
+        newPosition = randomGridPosition()
+    }
+    return newPosition
+}
 
+
+//update food location
+const updateFood = () => {
+    if (onSnake(food)) {
+        growSnake(growth)
+        food = randomFoodLocation()
+    }
+}
+
+let food = randomFoodLocation()
 //game function
 const game = () => {
 
