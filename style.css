@@ -16,16 +16,17 @@ article {
     width: 100vmin;
     height: 100vmin;
 }
-.pixel {
+/* .pixel {
 }
 
 .pixel:hover {
     background-color: blueviolet;
-}
+} */
 
 .snake {
     background-color: hsl(311, 89%, 25%);
     border: .20vmin solid hsl(50, 100%, 50%);
+    border-radius: 5px;
 }
 
 .food {
