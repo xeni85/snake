@@ -1,7 +1,7 @@
 //variables
 
 let drawboard = document.querySelector(".can-vas");
-let snakeSpeed = 1000;
+let snakeSpeed = 500;
 let gridSize = 21;
 let arrLength;
 let counter = 0;
@@ -9,12 +9,16 @@ let snakeDirection = {
     x: 0,
     y: 0
 }
-
 let previousDirection = {
     x: 0,
     y: 0
 }
-
+let food = {
+    x: 1, 
+    y: 1
+} 
+const growth = 1;
+let newSnakePart = 0;
 let snakeArr =
     // snake array
     [{
@@ -119,6 +123,7 @@ const moveSnake = () => {
 
 //simulate motion
 const updateFrames = () => {
+    addParts()
     let direction = moveSnake();
     const snakePart = document.createElement('div')
     snakePart.style.gridRowStart = snakeArr[counter].x
@@ -142,8 +147,6 @@ const updateFrames = () => {
 // console.log("this is the length" + arrLength)
 
 //create food
-let food = {x: 1, y: 1} 
-
 const drawFood = (arr) => {
     const foodPart = document.createElement('div')
     foodPart.style.gridRowStart = food.x
@@ -152,10 +155,37 @@ const drawFood = (arr) => {
     arr.appendChild(foodPart)
 }
 
-//update food location
-const updateFood = {
-
+//compare part positions
+const eqPositions = (p1, p2) => {
+    return p1.x === p2.x && p1.y === p2.y
 }
+
+
+const onSnake = (position) => {
+    return snakeArr.some(part => {
+        return eqPositions (part, position)
+    })
+}
+//lengthen the snake
+const growSnake = (element) => {
+    newSnakePart += element
+}
+
+const addParts = () => {
+    for(let i = 0; i < newSnakePart; i++) {
+        snakeArr.push({ ...snakeArr[snakeArr.length - 1]})
+}
+newSnakePart = 0
+}
+//update food location
+const updateFood = () => {
+    if(onSnake(food)) {
+        growSnake(growth)
+        food = {x: 20, y: 10}
+    }
+}
+
+//create random food location
 
 //game function
 const game = () => {
