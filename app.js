@@ -1,12 +1,14 @@
-const snake = {
-    variablePlace: {
-        pixel: "",
-        drawboard: document.querySelector(".can-vas"),
-        snakeSpeed: 500,
-        gridSize: 21,
-    },
+
+//variables
+
+let drawboard = document.querySelector(".can-vas");
+let snakeSpeed= 1000;
+let gridSize = 21;
+
+
+let snakeArr = 
     // snake array
-    snakeArr: [
+    [
         {
             x: 11,
             y: 11,
@@ -31,46 +33,59 @@ const snake = {
             // x: Math.floor(snake.variablePlace.gridSize/2) - 3, 
             // y: Math.floor(snake.variablePlace.gridSize/2),
         }, 
-    ],
+    ]
+
+
     //create grid where snake will move
-    createGrid: (drawGrid) => {
+    const createGrid = (drawGrid) => {
         
         // for (let i = 0; i < drawGrid ** 2; i++) {
         //     snake.variablePlace.pixel = document.createElement('div');
         //     snake.variablePlace.pixel.classList.toggle('pixel');
         //     snake.variablePlace.drawboard.appendChild(snake.variablePlace.pixel);
         // }
-        snake.variablePlace.drawboard.style.gridTemplateColumns = `repeat(${drawGrid}, 1fr)`;
-        snake.variablePlace.drawboard.style.gridTemplateRows = `repeat(${drawGrid}, 1fr)`;
-    },
+        drawboard.style.gridTemplateColumns = `repeat(${drawGrid}, 1fr)`;
+        drawboard.style.gridTemplateRows = `repeat(${drawGrid}, 1fr)`;
+    };
+
+
     //create a snake 
-    drawSnake: (arr) => {
-        snake.snakeArr.forEach(element => {
-            const snakePart = document.createElement('div');
-            snakePart.style.gridRowStart = element.x;
-            snakePart.style.gridColumnStart = element.y;
-            snakePart.classList.add("snake");
-            snake.variablePlace.drawboard.appendChild(snakePart);
-        });
-    },
-    updateFrames() {
+    const drawSnake = (arr) => {
+        let i = 0;
+            const snakePart = document.createElement('div')
+            snakePart.style.gridRowStart = snakeArr[i].x
+            snakePart.style.gridColumnStart = snakeArr[i].y
+            snakePart.classList.add("snake")
+            arr.appendChild(snakePart)
+            i += 1;
+            snakeArr.pop()
+    }
 
-    },
+    //simulate motion
+    const updateFrames = () =>{
+        snakeArr.unshift({...snakeArr[0]})
+        snakeArr[0].x += 0
+        snakeArr[0].y += 1
+    }
+    
 
-    game: () => {
+    //game function
+    const game = () => {
         setInterval(() => {
+            createGrid(gridSize);
+            drawSnake(drawboard);
+            console.log(drawboard)
             console.log("render");
             // console.log("Game was called")
             // snake.createGrid(21);
-            snake.drawSnake(snake.drawboard)
-        }, snake.variablePlace.snakeSpeed);
+            updateFrames();
+        }, snakeSpeed);
     }
-}
 
 
 //call main function
-snake.game();
-snake.createGrid(snake.variablePlace.gridSize);
+game();
+
 
 
 
