@@ -52,8 +52,11 @@ let player2 = {
     score: 0,
     winImg: "images/player2-wins.png"
 }
-
 let playerOneTurn;
+
+
+
+
 //create grid where snake will move
 const createGrid = (drawGrid) => {
 
@@ -262,13 +265,18 @@ const game = () => {
         // if (snakeArr.length >= 5) {
         //     snakeArr = snakeArr.splice(-1);
         // }
+        console.log("snake speed when called " + snakeSpeed)
     }, snakeSpeed);
 }
 
-
-//call main function
-game();
-
+const beginGame = () => {
+    if(playerOneTurn === undefined) {
+        document.getElementById("alert").innerText = ""
+    }
+    document.querySelector(".begin-game").style.display = "none";
+    gridSize = document.getElementById("grid-size").value 
+    snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+}
 //landing page
 document.getElementById("player1").addEventListener("click", () => {
     document.getElementById("player1").classList.add('clicked')
@@ -278,15 +286,17 @@ document.getElementById("player1").addEventListener("click", () => {
 document.getElementById("player2").addEventListener("click", () => {
     document.getElementById("player2").classList.add('clicked')
     document.getElementById("player1").classList.remove('clicked')
-    playerOneTurn = fals;
+    playerOneTurn = false;
 });
 document.getElementById("start").addEventListener("click", () => {
-    document.querySelector(".begin-game").style.display = "none";
-    gridSize = document.getElementById("grid-size").value 
-    snakeSpeed = document.getElementById("speed").value
-    console.log("this is the grid "+ gridSize)
-    console.log("this is the speed " + snakeSpeed)
+    
+   
+   //call main function
+    game();
 });
+
+
+
 
 
 
