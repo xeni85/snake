@@ -270,7 +270,9 @@ game();
 
 
 
-
+document.getElementById("player1").addEventListener("click", () => {
+    document.getElementById("player1").classList.toggle('clicked')
+  });
 
 //-----------IN CASE OF CANVAS USE ----------
 //create main function
