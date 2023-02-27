@@ -237,8 +237,13 @@ const updateFood = () => {
     }
 }
 const updateScore = () => {
-    document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
-    player1.score = snakeArr.length - 1;
+    if (changeTurns === false) {
+        document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
+        player1.score = snakeArr.length - 1;
+    } else if (changeTurns === true) {
+        document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
+        player1.score = snakeArr.length - 1;
+    }
 }
 
 //game function
