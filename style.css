@@ -24,6 +24,16 @@ article {
     background-color: blueviolet;
 } */
 
+#player1-section {
+    width: 25vmin;
+    height: 25vmin;
+}
+
+
+#player2-section {
+    width: 25vmin;
+    height: 25vmin;
+}
 .snake {
     background-color: hsl(311, 89%, 25%);
     border: .20vmin solid hsl(50, 100%, 50%);
@@ -73,5 +83,6 @@ form button {
 form input {
     width: 35vw;
     height: 3vh;
+    box-shadow: 0 0 10px #fff;
 }
 

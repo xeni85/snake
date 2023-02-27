@@ -268,11 +268,19 @@ const game = () => {
 //call main function
 game();
 
-
-
 document.getElementById("player1").addEventListener("click", () => {
-    document.getElementById("player1").classList.toggle('clicked')
+    document.getElementById("player1").classList.add('clicked')
+    document.getElementById("player2").classList.remove('clicked')
   });
+document.getElementById("player2").addEventListener("click", () => {
+    document.getElementById("player2").classList.add('clicked')
+    document.getElementById("player1").classList.remove('clicked')
+});
+document.getElementById("start").addEventListener("click", () => {
+    document.querySelector(".begin-game").style.display = "none";
+});
+
+
 
 //-----------IN CASE OF CANVAS USE ----------
 //create main function
