@@ -38,6 +38,7 @@ article {
 
 .begin-game {
     top:0;
+    left: 0;
     z-index: 2;
     position: absolute;
     width: 100vw;
@@ -62,4 +63,15 @@ form button {
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px #fff;
+    font-size: 2vw;
 }
+
+.player-btns button:focus {
+    background-color: rgb(134, 134, 191);
+}
+
+form input {
+    width: 35vw;
+    height: 3vh;
+}
+
