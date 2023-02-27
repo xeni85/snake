@@ -290,11 +290,10 @@ const beginGame = () => {
         gridSize = document.getElementById("grid-size").value 
         snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
     } else if (playerOneTurn === false) {
-        document.getElementById("player1-section").innerText = `Player 1 Score ${snakeArr.length - 1}`
-
         document.querySelector(".begin-game").style.display = "none";
         gridSize = document.getElementById("grid-size").value 
         snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+        document.getElementById("score1").style.display = "block";
     }
 }
 
