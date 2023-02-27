@@ -53,6 +53,7 @@ let player2 = {
     winImg: "images/player2-wins.png"
 }
 let playerOneTurn;
+let changeTurns = false;
 
 
 
@@ -235,7 +236,10 @@ const updateFood = () => {
         food = randomFoodLocation()
     }
 }
-
+const updateScore = () => {
+    document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
+    player1.score = snakeArr.length - 1;
+}
 
 //game function
 const game = () => {
@@ -266,7 +270,7 @@ const game = () => {
         //     snakeArr = snakeArr.splice(-1);
         // }
         console.log("snake speed when called " + snakeSpeed)
-         document.getElementById("score1").innerHTML = `Player 1 score is ${snakeArr.length - 1}`;
+        updateScore();
     }, snakeSpeed);
 }
 
@@ -282,25 +286,36 @@ document.getElementById("player2").addEventListener("click", () => {
     playerOneTurn = false;
 });
 
-const beginGame = () => {
-    if(playerOneTurn === undefined) {
-        document.getElementById("alert").innerText = "Please choose number of players!"
-    } else if(playerOneTurn === true) {
-        document.querySelector(".begin-game").style.display = "none";
-        gridSize = document.getElementById("grid-size").value 
-        snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+const grabValues = () => {
+    document.querySelector(".begin-game").style.display = "none";
+    gridSize = document.getElementById("grid-size").value 
+    snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+}
+
+const populateSections = () => {
+    
+    let scoreClasses = document.querySelectorAll(".scoreClass");
+    scoreClasses.forEach((c)=> {
+        c.style.display = "block";
+    })
+}
+
+function beginGame() {
+    if (playerOneTurn === undefined) {
+        document.getElementById("alert").innerText = "Please choose number of players!";
+    } else if (playerOneTurn === true) {
+        grabValues();
+        game();
     } else if (playerOneTurn === false) {
-        document.querySelector(".begin-game").style.display = "none";
-        gridSize = document.getElementById("grid-size").value 
-        snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
-        document.getElementById("score1").style.display = "block";
+        grabValues();
+        populateSections();
+        game();
     }
 }
 
 document.getElementById("start").addEventListener("click", () => {
     beginGame()
    //call main function
-    game();
 });
 
 

@@ -25,8 +25,8 @@ article {
 } */
 
 #player1-section {
-    min-width:25vmin;
-    min-height: 25vmin;
+    width:25vmin;
+    height: 25vmin;
 }
 
 #player2-section {
@@ -89,6 +89,7 @@ form input {
     box-shadow: 0 0 10px #fff;
 }
 
-#score1 {
+
+.scoreClass {
     display: none;
 }
