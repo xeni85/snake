@@ -2,7 +2,7 @@
 
 let drawboard = document.querySelector(".can-vas");
 let snakeSpeed = 500;
-let gridSize = 21;
+let gridSize = 15;
 let arrLength;
 let counter = 0;
 let snakeDirection = {
@@ -52,6 +52,7 @@ let player2 = {
     score: 0,
     winImg: "images/player2-wins.png"
 }
+
 //create grid where snake will move
 const createGrid = (drawGrid) => {
 

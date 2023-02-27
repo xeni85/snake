@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Snake</title>
 </head>
+
 <body>
     <main>
         <!--Maybe put a picture in the canvas as backup-->
@@ -21,9 +23,13 @@
                 <button id="player1"></button>
                 <button id="player2"></button>
             </div>
-
+            <label for="speed">Speed</label><br>
+            <input type="number" id="speed" name="speed" required><br>
+            <label for="grid-size">Last name:</label><br>
+            <input type="range" id="grid-size" name="grid-size" required min="15" max="35">
         </form>
     </div>
     <script src="app.js" async defer type="module"></script>
 </body>
+
 </html>
