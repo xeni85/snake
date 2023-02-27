@@ -1,7 +1,7 @@
 //variables
 
 let drawboard = document.querySelector(".can-vas");
-let snakeSpeed = 500;
+let snakeSpeed = 1000;
 let gridSize = 15;
 let arrLength;
 let counter = 0;
@@ -269,6 +269,7 @@ const game = () => {
 //call main function
 game();
 
+//landing page
 document.getElementById("player1").addEventListener("click", () => {
     document.getElementById("player1").classList.add('clicked')
     document.getElementById("player2").classList.remove('clicked')
@@ -281,6 +282,10 @@ document.getElementById("player2").addEventListener("click", () => {
 });
 document.getElementById("start").addEventListener("click", () => {
     document.querySelector(".begin-game").style.display = "none";
+    gridSize = document.getElementById("grid-size").value 
+    snakeSpeed = document.getElementById("speed").value
+    console.log("this is the grid "+ gridSize)
+    console.log("this is the speed " + snakeSpeed)
 });
 
 
