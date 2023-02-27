@@ -53,6 +53,7 @@ let player2 = {
     winImg: "images/player2-wins.png"
 }
 
+let playerOneTurn;
 //create grid where snake will move
 const createGrid = (drawGrid) => {
 
@@ -271,10 +272,12 @@ game();
 document.getElementById("player1").addEventListener("click", () => {
     document.getElementById("player1").classList.add('clicked')
     document.getElementById("player2").classList.remove('clicked')
+    playerOneTurn = true;
   });
 document.getElementById("player2").addEventListener("click", () => {
     document.getElementById("player2").classList.add('clicked')
     document.getElementById("player1").classList.remove('clicked')
+    playerOneTurn = fals;
 });
 document.getElementById("start").addEventListener("click", () => {
     document.querySelector(".begin-game").style.display = "none";
