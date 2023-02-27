@@ -241,7 +241,6 @@ const updateFood = () => {
 const game = () => {
 
 
-
     setInterval(() => {
         if(gameOver) {
             if(confirm("You lost. Press ok to restart")) {
@@ -281,9 +280,6 @@ document.getElementById("player2").addEventListener("click", () => {
     playerOneTurn = false;
 });
 
-const onePlayer = () => {
-
-}
 const beginGame = () => {
     if(playerOneTurn === undefined) {
         document.getElementById("alert").innerText = "Please choose number of players!"
@@ -291,11 +287,17 @@ const beginGame = () => {
         document.querySelector(".begin-game").style.display = "none";
         gridSize = document.getElementById("grid-size").value 
         snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+    } else if (playerOneTurn === false) {
+        document.getElementById("player1-section").innerText = `Player 1 Score ${snakeArr.length - 1}`
+
+        document.querySelector(".begin-game").style.display = "none";
+        gridSize = document.getElementById("grid-size").value 
+        snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
     }
 }
 
 document.getElementById("start").addEventListener("click", () => {
-    beginGame()
+
    //call main function
     game();
 });

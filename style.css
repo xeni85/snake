@@ -25,8 +25,8 @@ article {
 } */
 
 #player1-section {
-    width: 25vmin;
-    height: 25vmin;
+    min-width:25vmin;
+    min-height: 25vmin;
 }
 
 #player2-section {
