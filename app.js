@@ -241,6 +241,7 @@ const updateFood = () => {
 const game = () => {
 
 
+
     setInterval(() => {
         if(gameOver) {
             if(confirm("You lost. Press ok to restart")) {
@@ -265,6 +266,7 @@ const game = () => {
         //     snakeArr = snakeArr.splice(-1);
         // }
         console.log("snake speed when called " + snakeSpeed)
+         document.getElementById("score1").innerHTML = `Player 1 score is ${snakeArr.length - 1}`;
     }, snakeSpeed);
 }
 
@@ -297,7 +299,7 @@ const beginGame = () => {
 }
 
 document.getElementById("start").addEventListener("click", () => {
-
+    beginGame()
    //call main function
     game();
 });

@@ -89,3 +89,6 @@ form input {
     box-shadow: 0 0 10px #fff;
 }
 
+#score1 {
+    display: none;
+}
