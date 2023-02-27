@@ -43,6 +43,10 @@ let snakeArr =
     }, ]
 let gameOver = false;
 
+let player1 = {
+    score: 0,
+    winImg
+}
 //create grid where snake will move
 const createGrid = (drawGrid) => {
 
