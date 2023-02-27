@@ -36,10 +36,17 @@ article {
 }
 
 .begin-game {
+    top:0;
     z-index: 2;
     position: absolute;
     width: 100vw;
     height: 100vh;
+    background-image: url("images/landing-page-background.png");
+    background-size: cover;
+}
+
+.begin-form {
     left: 44vw;
     top:42vh;
+    position: absolute;
 }
