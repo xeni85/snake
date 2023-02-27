@@ -34,3 +34,12 @@ article {
     border: .20vmin solid hsl(311, 89%, 25%);
     border-radius: 5px;
 }
+
+.begin-game {
+    z-index: 2;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 44vw;
+    top:42vh;
+}

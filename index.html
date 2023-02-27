@@ -20,13 +20,13 @@
     <div class="begin-game">
         <form action="">
             <div class="player-btns">
-                <button id="player1"></button>
-                <button id="player2"></button>
+                <button id="player1">Player 1</button>
+                <button id="player2">Player 2</button>
             </div>
-            <label for="speed">Speed</label><br>
-            <input type="number" id="speed" name="speed" required><br>
-            <label for="grid-size">Last name:</label><br>
-            <input type="range" id="grid-size" name="grid-size" required min="15" max="35">
+            <label for="speed">Select Speed</label><br>
+            <input type="range" id="speed" name="speed" min="1" max="5"><br>
+            <label for="grid-size">Select Grid Size</label><br>
+            <input type="range" id="grid-size" name="grid-size" min="15" max="35">
         </form>
     </div>
     <script src="app.js" async defer type="module"></script>
