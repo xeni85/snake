@@ -29,7 +29,6 @@ article {
     height: 25vmin;
 }
 
-
 #player2-section {
     width: 25vmin;
     height: 25vmin;
@@ -61,11 +60,15 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    left: 40vw;
+    left: 38vw;
     top:42vh;
     position: absolute;
 }
-
+#alert{
+    color: red;
+    font-size: x-small;
+    height: 4vh;
+}
 form button {
     background-color: yellowgreen;
     height: 8vh;
@@ -82,7 +85,7 @@ form button {
 
 form input {
     width: 35vw;
-    height: 3vh;
+    height: 5vh;
     box-shadow: 0 0 10px #fff;
 }
 

@@ -221,12 +221,12 @@ const snakeHead = () => {
 }
 
 
-const snakeImpolosion = () => {
+const snakeImplosion = () => {
     return onSnake(snakeArr[0], { ignoreHead: true })
 
 }
 const deaded = () => {
-    gameOver = borderHit(snakeHead()) || snakeImpolosion()
+    gameOver = borderHit(snakeHead()) || snakeImplosion()
 }
 //update food location
 const updateFood = () => {
@@ -269,14 +269,6 @@ const game = () => {
     }, snakeSpeed);
 }
 
-const beginGame = () => {
-    if(playerOneTurn === undefined) {
-        document.getElementById("alert").innerText = ""
-    }
-    document.querySelector(".begin-game").style.display = "none";
-    gridSize = document.getElementById("grid-size").value 
-    snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
-}
 //landing page
 document.getElementById("player1").addEventListener("click", () => {
     document.getElementById("player1").classList.add('clicked')
@@ -288,9 +280,22 @@ document.getElementById("player2").addEventListener("click", () => {
     document.getElementById("player1").classList.remove('clicked')
     playerOneTurn = false;
 });
+
+const onePlayer = () => {
+
+}
+const beginGame = () => {
+    if(playerOneTurn === undefined) {
+        document.getElementById("alert").innerText = "Please choose number of players!"
+    } else if(playerOneTurn === true) {
+        document.querySelector(".begin-game").style.display = "none";
+        gridSize = document.getElementById("grid-size").value 
+        snakeSpeed = (snakeSpeed/document.getElementById("speed").value).toString()
+    }
+}
+
 document.getElementById("start").addEventListener("click", () => {
-    
-   
+    beginGame()
    //call main function
     game();
 });
