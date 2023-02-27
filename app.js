@@ -45,7 +45,12 @@ let gameOver = false;
 
 let player1 = {
     score: 0,
-    winImg
+    winImg: "images/player1-wins.png"
+}
+
+let player2 = {
+    score: 0,
+    winImg: "images/player2-wins.png"
 }
 //create grid where snake will move
 const createGrid = (drawGrid) => {
