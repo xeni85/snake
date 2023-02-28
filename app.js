@@ -42,11 +42,13 @@ let snakeArr =
 let gameOver = false;
 let gameOverCounter = 0;
 let player1 = {
+    rounds: 0,
     score: 0,
     winImg: "images/player1-wins.png"
 }
 
 let player2 = {
+    rounds: 0,
     score: 0,
     winImg: "images/player2-wins.png"
 }
@@ -263,7 +265,9 @@ const switchPlayer = () => {
        //call main function
     });
 }
-
+const roundWinner = ( a , b ) {
+    a > b ? document.getElementById('round-span1').innerText = `${a}` : 
+}
 const compareScore = () => {
     if (gameOverCounter != 0 && gameOverCounter % 2 === 0) {
         let tempScore1 = player1.score

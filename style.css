@@ -77,6 +77,7 @@ section {
     font-size: x-small;
     height: 4vh;
 }
+
 form button {
     background-color: yellowgreen;
     height: 8vh;
@@ -100,4 +101,12 @@ form input {
 
 .scoreClass {
     display: none;
+}
+
+#round-one, #round-two {
+    text-decoration: underline;
+}
+
+#score1, #score2 {
+    color: red
 }
