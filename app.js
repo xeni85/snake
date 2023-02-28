@@ -265,8 +265,9 @@ const switchPlayer = () => {
 
 const compareScore = () => {
     if (gameOverCounter != 0 && gameOverCounter % 2 === 0) {
+        console.log(player1.score)
+        console.log(player2.score)
         rounds++
-        console.log(rounds)
     }
 }
 //game function
@@ -286,7 +287,7 @@ const game = () => {
         //     snakeArr.splice(arrLength - 2, 2);
 
         // }
-        
+        compareScore()
        if (continuePlaying === true) {
          deaded()
          drawboard.innerHTML = ''
@@ -301,7 +302,6 @@ const game = () => {
          //     snakeArr = snakeArr.splice(-1);
          // }
          updateScore();
-         compareScore()
        }
     }, snakeSpeed);
 }
