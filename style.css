@@ -114,14 +114,29 @@ form input {
     color: red;
 }
 
-#end-game {
+.end-game-one {
     top:0;
     left: 0;
-    z-index: 3;
+    z-index: 2;
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: antiquewhite;
-    background-size: cover;
-    display: none;
+    background-image: url("images/player1-wins.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(102, 99, 99);
+}
+
+.end-game-two {
+    top:0;
+    left: 0;
+    z-index: 2;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/player2-wins.png");
+    background-position: 25vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(102, 99, 99);
 }

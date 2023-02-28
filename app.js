@@ -289,10 +289,9 @@ const compareScore = () => {
 
 const compareRounds = () => {
     if(player1.rounds > player2.rounds) {
-        document.getElementById("end-game").style.backgroundImage = "images/player1-wins.png";
+        document.getElementById("end-game").classList.add("end-game-one")
     }else{
-        document.getElementById("end-game").style.display = "block";
-        document.getElementById("end-game").style.backgroundImage ="url=('./images/player2-wins.png')";
+        document.getElementById("end-game").classList.add("end-game-two")
     }
 }
 //game function
@@ -300,10 +299,10 @@ const game = () => {
 
     setInterval(() => {
         if(gameOver) {
-            if(gameOverCounter < 6) {
+            if(player1.rounds < 3 || player2.rounds < 3) {
                 switchPlayer()
             }
-            else if(gameOverCounter === 6) {
+            else if(player1.rounds === 3 || player2.rounds === 3) {
                 compareRounds()
                 // window.location = '/'
             }
