@@ -24,6 +24,14 @@ article {
     background-color: blueviolet;
 } */
 
+section {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
 #player1-section {
     width:25vmin;
     height: 25vmin;

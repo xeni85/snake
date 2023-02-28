@@ -233,6 +233,7 @@ const deaded = () => {
     if(gameOver = borderHit(snakeHead()) || snakeImplosion()) {
     changeTurns = !changeTurns;
     gameOverCounter++;
+    compareScore()
     resetVariables();
     continuePlaying = false;
     //call changes inside deaded. make new function and setinterval
@@ -265,9 +266,11 @@ const switchPlayer = () => {
 
 const compareScore = () => {
     if (gameOverCounter != 0 && gameOverCounter % 2 === 0) {
-        console.log(player1.score)
-        console.log(player2.score)
+        let tempScore1 = player1.score
+        let tempScore2 = player2.score
         rounds++
+        player1.score = 0;
+        player2.score = 0;
     }
 }
 //game function
@@ -287,7 +290,6 @@ const game = () => {
         //     snakeArr.splice(arrLength - 2, 2);
 
         // }
-        compareScore()
        if (continuePlaying === true) {
          deaded()
          drawboard.innerHTML = ''
