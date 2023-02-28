@@ -44,13 +44,13 @@ let gameOverCounter = 0;
 let player1 = {
     rounds: 0,
     score: 0,
-    winImg: "images/player1-wins.png"
+    winImg: "/images/player1-wins.png"
 }
 
 let player2 = {
     rounds: 0,
     score: 0,
-    winImg: "images/player2-wins.png"
+    winImg: "/images/player2-wins.png"
 }
 let playerOneTurn;
 let changeTurns = false;
@@ -288,7 +288,12 @@ const compareScore = () => {
 }
 
 const compareRounds = () => {
-    
+    if(player1.rounds > player2.rounds) {
+        document.getElementById("end-game").style.backgroundImage = "images/player1-wins.png";
+    }else{
+        document.getElementById("end-game").style.display = "inline-block";
+        document.getElementById("end-game").style.backgroundImage =`url=(${player2.winImg})`;
+    }
 }
 //game function
 const game = () => {
@@ -298,8 +303,9 @@ const game = () => {
             if(gameOverCounter < 6) {
                 switchPlayer()
             }
-            else if(confirm("You lost. Press ok to restart")) {
-                window.location = '/'
+            else if(gameOverCounter === 6) {
+                compareRounds()
+                // window.location = '/'
             }
             return
         }

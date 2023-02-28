@@ -113,3 +113,15 @@ form input {
 #score1, #score2 {
     color: red;
 }
+
+#end-game {
+    top:0;
+    left: 0;
+    z-index: 3;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: antiquewhite;
+    background-size: cover;
+    display: none;
+}
