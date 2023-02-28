@@ -44,13 +44,13 @@ let gameOverCounter = 0;
 let player1 = {
     rounds: 0,
     score: 0,
-    winImg: "/images/player1-wins.png"
+    winImg: "images/player1-wins.png"
 }
 
 let player2 = {
     rounds: 0,
     score: 0,
-    winImg: "/images/player2-wins.png"
+    winImg: "images/player2-wins.png"
 }
 let playerOneTurn;
 let changeTurns = false;
@@ -291,8 +291,8 @@ const compareRounds = () => {
     if(player1.rounds > player2.rounds) {
         document.getElementById("end-game").style.backgroundImage = "images/player1-wins.png";
     }else{
-        document.getElementById("end-game").style.display = "inline-block";
-        document.getElementById("end-game").style.backgroundImage =`url=(${player2.winImg})`;
+        document.getElementById("end-game").style.display = "block";
+        document.getElementById("end-game").style.backgroundImage ="url=('./images/player2-wins.png')";
     }
 }
 //game function
