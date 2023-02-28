@@ -3,8 +3,6 @@
 let drawboard = document.querySelector(".can-vas");
 let snakeSpeed = 1000;
 let gridSize = 15;
-let arrLength;
-let counter = 0;
 let snakeDirection = {
     x: 0,
     y: 0
@@ -42,7 +40,7 @@ let snakeArr =
         y: Math.ceil(gridSize / 2),
     }, ]
 let gameOver = false;
-
+let gameOverCounter = 0;
 let player1 = {
     score: 0,
     winImg: "images/player1-wins.png"
@@ -136,8 +134,8 @@ const updateFrames = () => {
     addParts()
     let direction = moveSnake();
     const snakePart = document.createElement('div')
-    snakePart.style.gridRowStart = snakeArr[counter].x
-    snakePart.style.gridColumnStart = snakeArr[counter].y
+    snakePart.style.gridRowStart = snakeArr[0].x
+    snakePart.style.gridColumnStart = snakeArr[0].y
     snakePart.classList.add("snake")
     drawboard.appendChild(snakePart)
     for (let i = snakeArr.length - 2; i >= 0; i--) {
@@ -226,8 +224,19 @@ const snakeImplosion = () => {
     return onSnake(snakeArr[0], { ignoreHead: true })
 
 }
+
+const resetVariables = () => {
+    snakeArr = {
+        x: Math.ceil(gridSize / 2),
+        y: Math.ceil(gridSize / 2),
+    }
+    gameOver = false;
+}
 const deaded = () => {
     gameOver = borderHit(snakeHead()) || snakeImplosion()
+    changeTurns = !changeTurns;
+    gameOverCounter++;
+    resetVariables();
 }
 //update food location
 const updateFood = () => {
@@ -246,13 +255,16 @@ const updateScore = () => {
     }
 }
 
+const switchPlayer = () => {
+
+}
 //game function
 const game = () => {
 
 
 
     setInterval(() => {
-        if(gameOver) {
+        if(gameOver && gameOverCounter === 6) {
             if(confirm("You lost. Press ok to restart")) {
                 window.location = '/'
             }
