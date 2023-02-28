@@ -107,6 +107,9 @@ form input {
     text-decoration: underline;
 }
 
+#round-span1, #round-span2 {
+    color: red;
+}
 #score1, #score2 {
-    color: red
+    color: red;
 }

@@ -265,8 +265,16 @@ const switchPlayer = () => {
        //call main function
     });
 }
-const roundWinner = ( a , b ) {
-    a > b ? document.getElementById('round-span1').innerText = `${a}` : 
+const roundWinner = ( a , b ) => {
+    document.getElementById('round-span1').innerText = `${player1.rounds}`  
+    document.getElementById('round-span2').innerText = `${player2.rounds}` 
+    if(a > b) {
+        player1.rounds++;
+        document.getElementById('round-span1').innerText = `${player1.rounds}`  
+    } else {
+        player2.rounds++;
+        document.getElementById('round-span2').innerText = `${player2.rounds}` 
+    }
 }
 const compareScore = () => {
     if (gameOverCounter != 0 && gameOverCounter % 2 === 0) {
@@ -275,7 +283,12 @@ const compareScore = () => {
         rounds++
         player1.score = 0;
         player2.score = 0;
+        roundWinner(tempScore1, tempScore2)
     }
+}
+
+const compareRounds = () => {
+    
 }
 //game function
 const game = () => {
