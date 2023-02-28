@@ -114,6 +114,15 @@ form input {
     color: red;
 }
 
+@keyframes winKeyframe {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
 .end-game-one {
     top:0;
     left: 0;
@@ -122,9 +131,11 @@ form input {
     width: 100vw;
     height: 100vh;
     background-image: url("images/player1-wins.png");
+    background-position: 25vw;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: rgb(102, 99, 99);
+    animation: winKeyframe 1s ease 0s 1 normal forwards;
 }
 
 .end-game-two {
@@ -139,4 +150,5 @@ form input {
     background-size: contain;
     background-repeat: no-repeat;
     background-color: rgb(102, 99, 99);
+    animation: winKeyframe 1s ease 0s 1 normal forwards;
 }

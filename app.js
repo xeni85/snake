@@ -299,7 +299,7 @@ const game = () => {
 
     setInterval(() => {
         if(gameOver) {
-            if(player1.rounds < 3 || player2.rounds < 3) {
+            if(player1.rounds < 3 && player2.rounds < 3) {
                 switchPlayer()
             }
             else if(player1.rounds === 3 || player2.rounds === 3) {
