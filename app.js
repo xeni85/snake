@@ -226,17 +226,18 @@ const snakeImplosion = () => {
 }
 
 const resetVariables = () => {
-    snakeArr = {
+    snakeArr = [{
         x: Math.ceil(gridSize / 2),
         y: Math.ceil(gridSize / 2),
-    }
-    gameOver = false;
+    },]
 }
 const deaded = () => {
-    gameOver = borderHit(snakeHead()) || snakeImplosion()
+    if(gameOver = borderHit(snakeHead()) || snakeImplosion()) {
     changeTurns = !changeTurns;
     gameOverCounter++;
     resetVariables();
+    changeTurns = !changeTurns
+    }
 }
 //update food location
 const updateFood = () => {
@@ -250,13 +251,13 @@ const updateScore = () => {
         document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
         player1.score = snakeArr.length - 1;
     } else if (changeTurns === true) {
-        document.getElementById("score1").innerHTML = `${snakeArr.length - 1}`;
-        player1.score = snakeArr.length - 1;
+        document.getElementById("score2").innerHTML = `${snakeArr.length - 1}`;
+        player2.score = snakeArr.length - 1;
     }
 }
 
 const switchPlayer = () => {
-
+    gameOver = false;
 }
 //game function
 const game = () => {
@@ -264,8 +265,14 @@ const game = () => {
 
 
     setInterval(() => {
-        if(gameOver && gameOverCounter === 6) {
-            if(confirm("You lost. Press ok to restart")) {
+        if(gameOver) {
+            if(gameOverCounter < 6) {
+                switchPlayer()
+                setTimeout(() => {
+
+                }, "5000");
+            }
+            else if(confirm("You lost. Press ok to restart")) {
                 window.location = '/'
             }
             return
