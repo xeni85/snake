@@ -236,7 +236,7 @@ const deaded = () => {
     changeTurns = !changeTurns;
     gameOverCounter++;
     resetVariables();
-    changeTurns = !changeTurns
+    console.log("this is change turns" + changeTurns)
     }
 }
 //update food location
@@ -268,9 +268,6 @@ const game = () => {
         if(gameOver) {
             if(gameOverCounter < 6) {
                 switchPlayer()
-                setTimeout(() => {
-
-                }, "5000");
             }
             else if(confirm("You lost. Press ok to restart")) {
                 window.location = '/'
