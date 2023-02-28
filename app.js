@@ -53,7 +53,7 @@ let player2 = {
 let playerOneTurn;
 let changeTurns = false;
 let continuePlaying = true;
-
+let rounds = 0;
 
 
 //create grid where snake will move
@@ -263,7 +263,12 @@ const switchPlayer = () => {
     });
 }
 
-
+const compareScore = () => {
+    if (gameOverCounter != 0 && gameOverCounter % 2 === 0) {
+        rounds++
+        console.log(rounds)
+    }
+}
 //game function
 const game = () => {
 
@@ -296,6 +301,7 @@ const game = () => {
          //     snakeArr = snakeArr.splice(-1);
          // }
          updateScore();
+         compareScore()
        }
     }, snakeSpeed);
 }
