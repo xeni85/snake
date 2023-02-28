@@ -52,7 +52,7 @@ let player2 = {
 }
 let playerOneTurn;
 let changeTurns = false;
-
+let continuePlaying = true;
 
 
 
@@ -86,7 +86,6 @@ const drawSnake = (arr) => {
 //update snake direction
 const moveSnake = () => {
     window.addEventListener('keydown', e => {
-        console.log(e)
 
         // if(e.key === 'ArrowUp' && previousDirection.y !== 0) {
         //     console.log("Inside ArrowUp if Statement")
@@ -97,7 +96,6 @@ const moveSnake = () => {
         // }
         switch (e.key) {
             case 'ArrowUp':
-                console.log("clicked up")
                 if (previousDirection.x !== 0) break
                 snakeDirection.x = -1
                 snakeDirection.y = 0
@@ -236,7 +234,8 @@ const deaded = () => {
     changeTurns = !changeTurns;
     gameOverCounter++;
     resetVariables();
-    console.log("this is change turns" + changeTurns)
+    continuePlaying = false;
+    //call changes inside deaded. make new function and setinterval
     }
 }
 //update food location
@@ -258,11 +257,15 @@ const updateScore = () => {
 
 const switchPlayer = () => {
     gameOver = false;
+    window.addEventListener("keydown", () => {
+        continuePlaying = true;
+       //call main function
+    });
 }
+
+
 //game function
 const game = () => {
-
-
 
     setInterval(() => {
         if(gameOver) {
@@ -278,22 +281,25 @@ const game = () => {
         //     snakeArr.splice(arrLength - 2, 2);
 
         // }
-        deaded()
-        drawboard.innerHTML = ''
-        createGrid(gridSize);
-        // console.log("Game was called")
-        // snake.createGrid(21);
-        drawSnake(drawboard)
-        drawFood(drawboard)
-        updateFrames();
-        updateFood()
-        // if (snakeArr.length >= 5) {
-        //     snakeArr = snakeArr.splice(-1);
-        // }
-        console.log("snake speed when called " + snakeSpeed)
-        updateScore();
+        
+       if (continuePlaying === true) {
+         deaded()
+         drawboard.innerHTML = ''
+         createGrid(gridSize);
+         // console.log("Game was called")
+         // snake.createGrid(21);
+         drawSnake(drawboard)
+         drawFood(drawboard)
+         updateFrames();
+         updateFood()
+         // if (snakeArr.length >= 5) {
+         //     snakeArr = snakeArr.splice(-1);
+         // }
+         updateScore();
+       }
     }, snakeSpeed);
 }
+
 
 //landing page
 document.getElementById("player1").addEventListener("click", () => {
