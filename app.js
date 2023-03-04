@@ -222,7 +222,6 @@ const snakeHead = () => {
 
 const snakeImplosion = () => {
     return onSnake(snakeArr[0], { ignoreHead: true })
-
 }
 
 const resetVariables = () => {
